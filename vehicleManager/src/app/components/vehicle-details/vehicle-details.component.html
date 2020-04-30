@@ -1,0 +1,64 @@
+<div class="modal fade"
+     *ngIf="vehicle"
+     [ngClass]="{ 'show' : vehicle }"
+     [ngStyle]="{'display': vehicle ? 'block' : 'none' }"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLiveLabel">{{ vehicle?.id ? 'Update vehicle' : 'Create vehicle' }}</h5>
+      <div class="alert alert-success" role="alert" *ngIf="vehicleSuccess">
+        This is a success alert—check it out!
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="vehicleFail" (click)="vehicleFail = false">
+        This is a danger alert—check it out!
+      </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="vehicleModalClose()">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="vehicleForm">
+        <div class="form-group col-12 col-md-6 mx-md-auto">
+          <input type="hidden" id="id" class="form-control" formControlName="id" [(ngModel)]="vehicle.id">
+
+          <label for="model">Model</label>
+          <input id="model" class="form-control" formControlName="model" [(ngModel)]="vehicle.model">
+
+          <label for="vehicleType">Vehicle Type</label>
+          <input id="vehicleType" class="form-control" formControlName="vehicleType" [(ngModel)]="vehicle.vehicleType">
+
+          <label for="plateCountrey">Plate Countrey</label>
+          <input id="plateCountrey" class="form-control" formControlName="plateCountrey" [(ngModel)]="vehicle.plateCountrey">
+
+          <label for="plateNumber">Plate Number</label>
+          <input id="plateNumber" class="form-control" formControlName="plateNumber" [(ngModel)]="vehicle.plateNumber">
+
+          <label for="vin">VIN</label>
+          <input id="vin" class="form-control" formControlName="vin" [(ngModel)]="vehicle.vin">
+
+          <label for="manifacturedCountry">Manifactured Country</label>
+          <input id="manifacturedCountry" class="form-control" formControlName="manifacturedCountry" [(ngModel)]="vehicle.manifacturedCountry">
+
+          <input id="creationDate" style="display: none" class="form-control" formControlName="creationDate" [(ngModel)]="vehicle.creationDate">
+          <br>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" [disabled]="!vehicleForm.valid || !vehicleForm.dirty"
+              (click)="onSubmit()">Save changes
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-success" role="alert" *ngIf="vehicleSuccess">
+  This is a success alert—check it out!
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="vehicleFail" (click)="vehicleFail = false">
+  This is a danger alert—check it out!
+</div>

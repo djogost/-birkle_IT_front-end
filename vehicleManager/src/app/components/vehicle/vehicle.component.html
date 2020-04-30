@@ -1,0 +1,51 @@
+<div class="table_parent">
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+    <tr class="text-center">
+      <th class="th-sm">Model
+      </th>
+      <th class="th-sm">Vehicle Type
+      </th>
+      <th class="th-sm">Plate Countrey
+      </th>
+      <th class="th-sm">Plate Number
+      </th>
+      <th class="th-sm">VIN
+      </th>
+      <th class="th-sm">Creation Date
+      </th>
+      <th class="th-sm">Manifactured Country
+      </th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vehicle of vehicles" class="transfer-item">
+      <td>{{ vehicle.model}}</td>
+      <td>{{ vehicle.vehicleType}}</td>
+      <td>{{ vehicle.plateCountrey}}</td>
+      <td>{{ vehicle.plateNumber}}</td>
+      <td>{{ vehicle.vin}}</td>
+      <td><span style="display: none;">{{ vehicle.creationDate}}</span>{{ vehicle.creationDate | date : 'dd.MM.yyyy'}}
+      </td>
+      <td>{{ vehicle.manifacturedCountry}}</td>
+      <td>
+        <button id="change-{{ vehicle.id }}" [routerLink]="'/' + vehicle.id" class="float-left update-button">UPDATE
+        </button>
+        <button id="delete-{{ vehicle.id }}" (click)="deleteVehicle( vehicle.id )" class="float-right delete-button">
+          DELETE
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<button id="newButton" class="float-left" (click)="modalOpen()">
+  <span>+</span>
+</button>
+
+<app-vehicle-details
+  *ngIf="vehicleModalOpen && vehiclesDetails"
+  [vehicle]="vehiclesDetails"
+></app-vehicle-details>
+

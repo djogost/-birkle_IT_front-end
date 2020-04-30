@@ -1,0 +1,127 @@
+$button-update: lightgreen;
+$button-delete: lightsalmon;
+$button-new: #395dff;
+
+*:focus {
+  outline: none;
+}
+
+body {
+  margin-right: 30px;
+}
+
+#newButton {
+  background: none;
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: $button-new;
+  position: absolute;
+  left: 50%;
+  transition: 0.3s ease-in-out;
+  top: 10px;
+  color: #fff;
+
+  span {
+    font-size: 40px;
+    display: block;
+  }
+
+  &:hover {
+    background-color: darken($button-new, 10%);
+    transform: scale(1.1);
+  }
+}
+
+#new {
+  position: absolute;
+  border: none;
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 30px;
+  background: tomato !important;
+  color: #ffffff;
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.4);
+}
+
+#search {
+  position: absolute;
+  border-radius: 0;
+  right: 20px;
+  top: 20px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+.table_parent {
+  width: 100vw;
+  overflow-x: auto;
+
+  table {
+    margin-top: 100px;
+    min-width: 1300px;
+    width: 100vw;
+
+    thead {
+      tr {
+        background-color: #fff;
+
+        th {
+          padding: 10px;
+          border-bottom: 1px solid;
+        }
+      }
+    }
+
+    tr {
+      transition: all 0.2s ease-in-out;
+      text-align: left;
+
+      &:nth-child(2n) {
+        background-color: rgba(0, 0, 0, .1);
+      }
+
+      td {
+        padding: 10px;
+        width: 150px;
+
+        &:last-child {
+          width: 300px;
+        }
+      }
+    }
+
+    .update-button {
+      background: $button-update;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      transition: 0.2s ease-in-out;
+      width: 30%;
+
+      &:hover {
+        background: darken($button-update, 10%);
+        cursor: pointer;
+      }
+    }
+
+    .delete-button {
+      background: $button-delete;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      transition: 0.2s ease-in-out;
+      width: 30%;
+      margin-left: 15px;
+
+      &:hover {
+        background: darken($button-delete, 10%);
+        cursor: pointer;
+      }
+    }
+  }
+}
